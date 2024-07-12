@@ -43,6 +43,7 @@ import User from "../../../../models/User";
 import bcrypt from "bcryptjs"
 
 export default async function handler(req, res) {
+console.log("MONGODB_URI exists:", !!process.env.MONGODB_URI);
 if(req.method === "POST"){
     const {firstname, lastname, email, password} = req.body;
 

@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
+    console.log("MONGODB_URI exists:", !!process.env.MONGODB_URI);
   if (req.method === "POST") {
     const { email, password } = req.body;
  
