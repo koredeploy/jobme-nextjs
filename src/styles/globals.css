@@ -47,11 +47,13 @@
     background-image: url(/signup.png);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
   }
   .log-bg{
     background-image: url(/login.png);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 
   }
 }

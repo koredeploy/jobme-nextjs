@@ -1,9 +1,17 @@
-import { useState } from 'react';
+"use client"
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'
-
+import Cookies from 'js-cookie';
 const Navbar = () => {
+  const [userToken, setUserToken]= useState(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(()=>{
+    const token = Cookies.get("token")
+    setUserToken(token)
+  },[])
+
   return (
     <>
     <div className='sticky top-0 z-50'>
@@ -24,7 +32,7 @@ const Navbar = () => {
             <Link href="/contacts" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
           </div>
 
-          <div className='hidden md:flex justify-center gap-3'>
+          {userToken ? <p>LOGOUT</p> :  <div className='hidden md:flex justify-center gap-3'>
             <Link href="/login">
             <button className='w-16 h-10 my-auto rounded-lg btn-color text-white hover:bg-white hover:text-black  ease-in-out duration-500'>Log In</button>
             </Link>
@@ -32,7 +40,7 @@ const Navbar = () => {
             <Link href="/signup">
             <button className='w-16 ml-2 h-10  my-auto rounded-lg hover-btn hover:text-white ease-in-out duration-500'>Sign Up</button>
             </Link>
-          </div>
+          </div>}
           
           <div className="md:hidden flex items-center">
             <button className="outline-none mobile-menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
