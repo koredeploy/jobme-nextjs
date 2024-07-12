@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'
 import Cookies from 'js-cookie';
+import logout from '../../utils/logout';
 const Navbar = () => {
   const [userToken, setUserToken]= useState(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,8 +33,8 @@ const Navbar = () => {
             <Link href="/contacts" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
           </div>
 
-          {userToken ? <p>LOGOUT</p> :  <div className='hidden md:flex justify-center gap-3'>
-            <Link href="/login">
+          {userToken ? <button onClick={logout} >LOGOUT</button> :  <div className='hidden md:flex justify-center gap-3'>
+            <Link  href="/login">
             <button className='w-16 h-10 my-auto rounded-lg btn-color text-white hover:bg-white hover:text-black  ease-in-out duration-500'>Log In</button>
             </Link>
 
