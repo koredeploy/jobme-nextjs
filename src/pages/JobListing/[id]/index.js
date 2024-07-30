@@ -141,7 +141,7 @@ if (id) {
   return (
     <>
       {/* <SuccessModal/> */}
-      <div className="container justify-center items-center mx-auto w-11/12 mt-1 mb-6 flex flex-col lg:flex-row   ">
+      <div className="container justify-center items-center mx-auto w-11/12 mt-1 mb-6 lg:grid lg:grid-cols-2 lg:gap-16 lg:justify-between lg:items-start">
         <div className="">
           <div className="bg-[#DBF7FD] rounded-lg p-5 lg:p-6">
             <Image

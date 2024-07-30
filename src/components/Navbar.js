@@ -74,7 +74,7 @@ const Navbar = () => {
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
         {}
         <Link href="/" className={`block   py-2 px-4 text-sm text-black text-hover`}>Home</Link>
-        <Link href="/about" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
+        <Link href="/joblisting" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
         <Link href="/contact" className="block py-2 px-4 text-sm text-black text-hover">Contact Us</Link>
 
        {userToken ?  <button onClick={logout} className="block py-2 px-4 text-sm text-black text-hover">Log Out</button> : 
