@@ -45,7 +45,7 @@ const  Contact = () => {
       <div className='flex flex-col lg:flex-row mx-auto w-10/12 gap-6 justify-center items-center mt-10 '>
         <div className='box text-center w-[365px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg py-4'>
           <div className='flex justify-center items-center'>
-            <Image src="/Frame117.png" width={100} height={100}   />
+            <Image src="/Frame117.png" width={100} height={100} alt='image'  />
           </div>
           <div className='mt-3'>
             <h1 className='text-xl font-bold'>Call Us</h1>
@@ -56,7 +56,7 @@ const  Contact = () => {
 
         <div className='box text-center w-[365px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg py-4'>
           <div className='flex justify-center items-center'>
-            <Image src="/Frame119.png" width={100} height={100}   />
+            <Image src="/Frame119.png" width={100} height={100}  alt='image' />
           </div>
           <div className='mt-3'>
             <h1 className='text-xl font-bold'>Email Us</h1>
@@ -67,7 +67,7 @@ const  Contact = () => {
 
         <div className='box text-center w-[365px] shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg py-4'>
           <div className='flex justify-center items-center'>
-            <Image src="/Frame120.png" width={100} height={100}   />
+            <Image src="/Frame120.png" width={100} height={100} alt='image'  />
           </div>
           <div className='mt-3'>
             <h1 className='text-xl font-bold'>Location</h1>

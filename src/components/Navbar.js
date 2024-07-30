@@ -36,7 +36,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-1 gap-4">
             <Link href="/" className={` ${hideLink} py-4 px-2 text-black text-hover transition duration-300`}>Home</Link>
-            <Link href="/joblisting" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
+            <Link href="/joblist" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
            {userToken &&  <Link href="/appliedjobs" className={` py-4 px-2 text-black text-hover transition duration-300`}>Applied Jobs</Link>}
             <Link href="/contacts" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
           </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
         {}
         <Link href="/" className={`block   py-2 px-4 text-sm text-black text-hover`}>Home</Link>
-        <Link href="/joblisting" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
+        <Link href="/joblist" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
         <Link href="/contact" className="block py-2 px-4 text-sm text-black text-hover">Contact Us</Link>
 
        {userToken ?  <button onClick={logout} className="block py-2 px-4 text-sm text-black text-hover">Log Out</button> : 

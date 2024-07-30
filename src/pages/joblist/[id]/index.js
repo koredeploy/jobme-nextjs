@@ -127,7 +127,7 @@ const fetchJob = async () => {
 if (id) {
   fetchJob()
 }
-  }, [id])
+  }, )
 
 
   if (loading) return <div>Loading</div>
