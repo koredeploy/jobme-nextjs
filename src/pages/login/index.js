@@ -1,11 +1,14 @@
 
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie'
 import { useRouter } from "next/router";
+import Loader from "@/components/loader/Loader";
+import { useContext } from "react";
+import AppContext from "../../../context/AppContext";
 
 const Login = () => {
   const {
@@ -15,10 +18,15 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  
   const router = useRouter()
-
+  const [isLoading, setIsLoading] = useState(false)
+  const [signinError, setSigninError] = useState("")
+  
+  // const {userId, setUserId} = useContext(AppContext)
   const onSubmit = async (data) => {
     try {
+      setIsLoading(true)
       console.log(data);
       const res = await fetch('api/auth/signin', {
         method: "POST",
@@ -28,9 +36,14 @@ const Login = () => {
         body: JSON.stringify(data),
       })
       const responseData = await res.json();
+      // setUserId(responseData.user.id)
       if(res.ok){
+        setIsLoading(false)
+        setSigninError("")
         console.log('login successful:', responseData);
-        // localStorage.setItem('token', responseData.token)
+        // setUserId
+        console.log(responseData.user.id);
+        Cookies.set('userId', responseData.user.id)
         Cookies.set('token', responseData.token, {
           expires: 1,
           secure: process.env.NODE_ENV === 'production',
@@ -39,10 +52,13 @@ const Login = () => {
         reset()
         router.push('/')
       }else{
+        setIsLoading(false)
         console.error("login failed:", responseData);
+        setSigninError(responseData.message)
       }
     } catch (error) {
-      console.error("An error occured during registration:", error);
+      setIsLoading(false)
+      console.error("An error occured:", error);
     }
   };
 
@@ -68,6 +84,7 @@ const Login = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col mt-7 gap-6"
           >
+            {signinError && <p className="text-red-500 font-bold">{signinError}</p>}
             <div className="w-full border rounded-lg bg-transparent">
               <input
                 {...register("email", {
@@ -107,9 +124,9 @@ const Login = () => {
 
             <button
               type="submit"
-              className="btn-color rounded-lg text-white mt-2 py-1 w-full hover:bg-white hover:text-black"
+              className="btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black"
             >
-              Log In
+              { !isLoading ? <p>Login</p> : <Loader text="logining in ..."/>}
             </button>
           </form>
           <div className="flex flex-col mt-8 gap-2 justify-center items-center">

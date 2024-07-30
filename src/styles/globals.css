@@ -72,3 +72,8 @@
 .border-color{
   border: 0cqmin;
 }
+
+.gradiant-bg{
+  background-image: linear-gradient(to right,#0DCAF0 , #0AA0BE, #0DC8EE, #07748A);
+height: 12vh;
+}
