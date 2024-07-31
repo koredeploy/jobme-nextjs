@@ -59,6 +59,8 @@ import useFetch from '../../../hooks/useFetch'
 import Cookies from 'js-cookie'
 // import Pagination from '@/components/Pagination'
 import DropDown from '../HomeComponent/DropDown'
+import { GoClock } from 'react-icons/go';
+import { SlLocationPin } from 'react-icons/sl';
 import AppContext from '../../../context/AppContext'
 
 const JobListing = () => {  
@@ -177,7 +179,7 @@ const JobListing = () => {
       <div className='w-11/12 container mx-auto '>
         <div className='flex flex-col gap-10 py-10'>
           {currentJobs.map((job) => (
-            <div className=' shadow-xl border-1 border-gray-300 p-4 rounded-md hidden md:grid gap-7 grid-cols-4  justify-between' key={job._id}>
+            <div className=' shadow-[0_2px_7px_rgb(0,0,0,0.2)] border-1 border-gray-300 p-4 rounded-md hidden md:grid gap-7 grid-cols-4  justify-between' key={job._id}>
             <div className='flex flex-row gap-3'>
             <div className='rounded-md p-2 shadow-md max-h-14 flex items-center justify-center'>
              <Image src={job.logoUrl} alt="logo" width={35} height={35} />
@@ -204,14 +206,52 @@ const JobListing = () => {
              <p className='text-xl font-semibold'>{job.salary}</p>
              </div>
               {/* <p>Applied At: {new Date(job.createdAt).toLocaleDateString()}</p> */}
-              <div className='flex justify-end items-center'><Link href={`/joblisting/${job._id}`} className='bg-cyan-500 text-white rounded p-2'> Apply Now</Link></div>
+              <div className='flex justify-end items-center'><Link href={`/joblist/${job._id}`} className='bg-cyan-500 text-white rounded p-2'> Apply Now</Link></div>
             </div>
           ))}
+
+{currentJobs.map((job) => (
+          <div key={job._id} className="grid grid-cols-1 md:hidden">
+            <div className='rounded-t-lg shadow-[0_2px_7px_rgb(0,0,0,0.2)] w-full px-6 py-8 mx-auto mt-5'>
+              <h1 className='text-xl font-semibold'>{job.title}</h1>
+              <div className='flex gap-2 items-center mt-4'>
+                <GoClock className='icon-color' size={20} />
+                <p className='text-gray-600'>Posted 24 hours ago</p>
+              </div>
+              <div className='flex justify-between mt-4 pr-5'>
+                <div className='rounded px-1 py-1 bg-[#0DCAF01F]'>
+                  <p className='text-[#0dcaf0] text-xs'>{job.employmentType}</p>
+                </div>
+                <div>
+                  <p>{job.salary}</p>
+                </div>
+              </div>
+              <hr className='mt-4' />
+              <div className='flex items-center gap-4 mt-4'>
+                <div className='flex justify-center items-center p-2 rounded shadow-md'>
+                  <Image src={job.logoUrl} width={35} height={55} alt='Company logo' />
+                </div>
+                <div>
+                  <h1 className='text-lg font-semibold'>{job.company}</h1>
+                  <div className='flex items-center gap-2'>
+                    <SlLocationPin className='text-gray-600' />
+                    <p className='text-gray-600'>{job.location}</p>
+                  </div>
+                </div>
+              </div>
+              <div className='mt-7'>
+                <Link href={`/joblist/${job._id}`} className='btn-color text-white p-2 px-6 rounded-lg hover:bg-[#01c0e6] ease-in-out duration-500'>
+                  Apply Now
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
         </div>
 
         {/* Pagination controls */}
         <div className="flex items-center justify-between  border-gray-200 bg-white px-4 py-3 sm:px-6">
-          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-center">
+          <div className="flex flex-1 items-center justify-center">
             <div>
               <nav aria-label="Pagination" className="isolate inline-flex -space-x-px rounded-md shadow-sm">
                 <button

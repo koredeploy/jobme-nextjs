@@ -5,7 +5,7 @@ import Stepper from '@/components/Stepper'
 const HowItWorks = () => {
   return (
     <div>
-        <div className='w-11/12 container text-center mx-auto mt-10'>
+        <div className=' container text-center mx-auto mt-10'>
 
         <div className='flex justify-center mt-5 w-full'>
         <Stepper />

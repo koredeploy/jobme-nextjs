@@ -32,19 +32,19 @@ const Footer = () => {
     <div className='right flex justify-end'>
 
         <ul className='flex flex-col gap-3 md:flex-row md:gap-6 md:items-center lg:gap-16'>
-            <Link href="#">
+            <Link href="/joblist">
             <li className='list-disc text-hover'>Find Jobs</li>
             </Link> 
 
-            <Link href="#">
+            <Link href="/contact">
             <li className='list-disc text-hover'>Contact Us</li>
             </Link> 
 
-            <Link href="#">
+            <Link href="/signup">
             <li className='list-disc text-hover'>Sign Up</li>
             </Link> 
 
-            <Link href="#">
+            <Link href="/login">
             <li className='list-disc text-hover'>Log In</li>
             </Link> 
         </ul>

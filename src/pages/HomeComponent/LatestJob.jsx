@@ -1,8 +1,11 @@
 import React from 'react'
 import Card from './Card'
+import useFetch from '../../../hooks/useFetch'
+
 
 
 const LatestJob = () => {
+
   return (
     <div className='container mx-auto w-11/12 mt-10'>
         <div className='flex flex-col justify-center w-10/12 mx-auto '>
