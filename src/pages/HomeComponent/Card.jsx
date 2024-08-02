@@ -75,7 +75,7 @@ const Card = () => {
    ))}
 </div>
 <div className='block md:hidden'>
-{/* <JobCardSwiper recentJobs={recentJobs}/> */}
+<JobCardSwiper recentJobs={recentJobs}/>
 </div>
    </>
   )

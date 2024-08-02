@@ -5,13 +5,13 @@ const Stepper = () => {
   const steps = [
     {  image:'https://res.cloudinary.com/doejcrfso/image/upload/v1721009778/jobme/step-one-icon_f7sxq7.png', text: 'Create account' },
     {  image:'https://res.cloudinary.com/doejcrfso/image/upload/v1721009778/jobme/step-two-icon_birnsw.png', text: 'Complete your profile' },
-    {  image:' https://res.cloudinary.com/doejcrfso/image/upload/v1721009778/jobme/step-three-icon_w4csrc.png', text: 'Find best Jobs' },
-    { image:' https://res.cloudinary.com/doejcrfso/image/upload/v1721009778/jobme/step-four-icon_isagqv.png', text: 'Apply for Jobs' },
+    {  image:'https://res.cloudinary.com/doejcrfso/image/upload/v1721009778/jobme/step-three-icon_w4csrc.png', text: 'Find best Jobs' },
+    { image:'https://res.cloudinary.com/doejcrfso/image/upload/v1721009778/jobme/step-four-icon_isagqv.png', text: 'Apply for Jobs' },
   ];
 
   return (
-    <div className="w-11/12 lg:w-10/12 container mx-auto pt-14 pb-14">
-      <h2 className="text-center text-2xl font-semibold mb-8">How It Works?</h2>
+    <div className="w-11/12 lg:w-10/12 container mx-auto py-6">
+      <h2 className="text-center text-2xl lg:text-3xl font-semibold mb-8">How It Works?</h2>
       <div className="flex items-center justify-between relative">
         {steps.map((step, index) => (
           <React.Fragment key={index}>

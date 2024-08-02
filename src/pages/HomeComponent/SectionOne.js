@@ -12,7 +12,7 @@ const SectionOne = () => {
             </div>
 
             <div className=' mx-auto lg:mr-0'>
-                <h3 className='font-semibold lg:w-4/6 text-lg lg:text-xl xl:text-3xl'>Find Millions of Job
+                <h3 className='font-semibold w-11/12 lg:w-4/6 text-xl lg:text-xl xl:text-3xl'>Find Millions of Job
                 Opportunities Right for You!</h3>
 
                 <p className='py-3 w-full lg:w-[80%] xl:text-xl'>Lorem ipsum dolor sit amet consectetur. Duis sed ornare adipiscing sed platea integer habitant. Eros quis hac amet dignissim morbi vulputate eriva it commodo mi. Est mauris diam donec magna. Sit cras fringilla integer sed praesent urna amet. Donec suspendisse quis sed placerat lacus eupiii pretium duis semper est ac nec ultricie.</p>
@@ -27,7 +27,7 @@ const SectionOne = () => {
 
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-5 mt-8'>
             <div className=' mx-auto lg:mx-0  my-auto'>
-                <h3 className='font-semibold lg:w-4/6 text-lg lg:text-xl xl:text-3xl' >
+                <h3 className='font-semibold w-11/12 lg:w-4/6 text-xl lg:text-xl xl:text-3xl' >
                 Looking to be one of the World’s Best
                 Talents?
                 </h3>

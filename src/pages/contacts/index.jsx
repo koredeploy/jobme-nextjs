@@ -43,7 +43,7 @@ const Contact = () => {
             <h2>We want to hear from you</h2>
           </div>
         </div>
-        <div className=" w-3/4 lg:w-2/3 mx-auto z-20 -mt-5">
+        <div className=" w-4/5 lg:w-2/3 mx-auto z-20 -mt-5">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-[#DBF7FD] rounded-lg py-8 px-7 flex flex-col  gap-3 xl:gap-10 xl:px-0"
@@ -137,7 +137,7 @@ const Contact = () => {
           </form>
         </div>
 
-        <div className="flex flex-col lg:flex-row w-4/5 mx-auto gap-14 justify-center items-center my-10 py-11 ">
+        <div className="flex flex-col lg:flex-row w-4/5 mx-auto gap-10 lg:gap-14 justify-center items-center my-10 py-11 ">
           <div className="box text-center w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg py-4">
             <div className="flex justify-center items-center">
               <Image src="/Frame117.png" width={100} height={100} alt="image" />

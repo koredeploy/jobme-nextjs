@@ -271,7 +271,7 @@ const DropDown = () => {
         </div>
         <div className=" flex md:hidden mt-4  items-center justify-center">
             {/* Conditional rendering for the button */}
-            <Link className='w-full' href="/joblisting">
+            <Link className='w-full' href="/joblist">
               <button className="bg-cyan-500 w-full text-white py-3 px-6 rounded-md font-semibold">Find Jobs</button>
             </Link>
           </div>
