@@ -9,12 +9,10 @@
 //   const [userToken, setUserToken]= useState(null)
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
 //   useEffect(()=>{
 //     const token = Cookies.get("token")
 //     setUserToken(token)
 //   },[])
-
 
 //   const showLink = !userToken ? 'hidden' : 'block'
 
@@ -23,7 +21,7 @@
 //   return (
 //     <>
 //     <div className='sticky top-0 z-50'>
-      
+
 //     <nav className="bg-[#FFFFFFCC] py-2 md:py-4 lg:py-5 shadow-lg ">
 //       <div className="w-11/12 container mx-auto ">
 //         <div className="flex justify-between items-center">
@@ -50,7 +48,7 @@
 //             <button className='w-16 ml-2 h-10  my-auto rounded-lg text-lg hover:border-b hover:border-t  hover:border-cyan-400 hover:text-black ease-in-out duration-500'>Sign Up</button>
 //             </Link>
 //           </div>}
-          
+
 //           <div className="md:hidden flex items-center">
 //             <button className="outline-none mobile-menu-button " onClick={() => setIsMenuOpen(!isMenuOpen)}>
 //               <svg className="w-6 h-6 text-gray-500 hover:text-gray-900"
@@ -78,18 +76,16 @@
 //         {userToken &&  <Link href="/appliedjobs" className="block py-2 px-4 text-lg text-black text-hover">Applied Jobs</Link> }
 //         <Link onClick={()=> setIsMenuOpen(false)} href="/contacts" className="block py-2 px-4 text-lg text-black text-hover">Contact Us</Link>
 
-//        {userToken ?  <button onClick={logout} className="block py-2 text-lg px-4  text-black text-hover">Log Out</button> : 
+//        {userToken ?  <button onClick={logout} className="block py-2 text-lg px-4  text-black text-hover">Log Out</button> :
 //        <>
 //        <Link onClick={()=> setIsMenuOpen(false)} href="/login" className="block py-2 px-4 text-lg  text-black text-hover">Log In</Link>
 //        <Link onClick={()=> setIsMenuOpen(false)} href="/signup" className="block py-2 px-4 text-lg text-black text-hover">Sign UP</Link>
 //        </>
 //        }
 
-        
-      
 //       </div>
 //     </nav>
-    
+
 //     </div>
 //     </>
 //   )
@@ -98,24 +94,24 @@
 // export default Navbar
 
 // "use client"
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import Cookies from 'js-cookie';
-import logout from '../../utils/logout';
-import UserCard from './UserCard';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Cookies from "js-cookie";
+import logout from "../../utils/logout";
+import UserCard from "./UserCard";
 
 const Navbar = () => {
   const [userToken, setUserToken] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const token = Cookies.get('token');
+    const token = Cookies.get("token");
     setUserToken(token);
   }, []);
 
-  const showLink = !userToken ? 'hidden' : 'block';
-  const hideLink = userToken ? 'hidden' : 'block';
+  const showLink = !userToken ? "hidden" : "block";
+  const hideLink = userToken ? "hidden" : "block";
 
   return (
     <>
@@ -126,7 +122,12 @@ const Navbar = () => {
               <div className="flex space-x-7">
                 <div>
                   <Link href="/" className="flex items-center py-4 px-2">
-                    <Image src="/JOBME.png" width={75} height={100} alt="logo" />
+                    <Image
+                      src="/JOBME.png"
+                      width={75}
+                      height={100}
+                      alt="logo"
+                    />
                   </Link>
                 </div>
               </div>
@@ -203,7 +204,7 @@ const Navbar = () => {
           </div>
           <div
             className={`md:hidden transition-transform duration-1000 ease-in-out transform ${
-              isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+              isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
             } overflow-hidden`}
           >
             <Link
@@ -222,6 +223,7 @@ const Navbar = () => {
             </Link>
             {userToken && (
               <Link
+                onClick={() => setIsMenuOpen(false)}
                 href="/appliedjobs"
                 className="block py-2 px-4 text-lg text-black"
               >
@@ -246,14 +248,12 @@ const Navbar = () => {
             ) : (
               <>
                 <Link
-                  onClick={() => setIsMenuOpen(false)}
                   href="/login"
                   className="block py-2 px-4 text-lg text-black"
                 >
                   Log In
                 </Link>
                 <Link
-                  onClick={() => setIsMenuOpen(false)}
                   href="/signup"
                   className="block py-2 px-4 text-lg text-black"
                 >
