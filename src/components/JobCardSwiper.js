@@ -110,7 +110,7 @@ import { SlLocationPin } from 'react-icons/sl';
 import { useRef } from 'react';
 
 const JobCardSwiper = ({ recentJobs }) => {
-
+  console.log(recentJobs);
   const settings = {
     dots: false,
     infinite: true,

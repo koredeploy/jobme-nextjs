@@ -139,6 +139,7 @@ import { fetchAppliedJobs } from "../../../services/allJobsApplications";
 import Cookies from "js-cookie";
 import { format } from 'date-fns';
 import UpdateStatusModal from "@/components/modals/UpdateStatusModal";
+import SkeletonLoader from "@/components/SkeletonLoader";
 
 const AppliedJobs = () => {
   const userId = Cookies.get("userId");
@@ -190,15 +191,25 @@ const AppliedJobs = () => {
   };
 
   if (error) return <div className='w-11/12 mx-auto container flex justify-center py-14'>Error: {error}</div>;
-  if (loading) return <div className='w-11/12 mx-auto container flex justify-center py-14'>Loading...</div>;
+  if (loading) return <div className='w-11/12 mx-auto container gap-6 flex flex-col justify-start py-14'>
+      <h2 className="text-3xl md:text-4xl font-semibold mb-6 p-3 rounded-lg w-full md:w-[54%] text-left  lg:w-[40%] xl:w-[33%] border-2 border-[#0dcaf0]">
+        My Job Applications
+      </h2>
+    <SkeletonLoader/>
+    <SkeletonLoader/>
+    <SkeletonLoader/>
+  </div>;
 
   return (
     <div className="container mx-auto w-11/12 py-6">
-      <h2 className="text-3xl md:text-4xl font-semibold mb-6 p-3 rounded-lg w-8/12 md:w-4/12 text-center self-center lg:w-[30%] border-2 border-[#0dcaf0]">
+      <h2 className="text-3xl md:text-4xl font-semibold mb-6 p-3 rounded-lg w-full md:w-[54%] text-center self-center lg:w-[40%] xl:w-[33%] border-2 border-[#0dcaf0]">
         My Job Applications
       </h2>
-      <p className="mb-8 font-semibold text-xl">View and manage your job status</p>
+    {appliedJobs && appliedJobs.length > 1 &&  <p className="mb-8 font-semibold text-xl">View and manage your job status</p>}
       <div className="space-y-14">
+        {appliedJobs.length < 1 && 
+        <div className="pt-8 pb-56 md:pb-[31rem] lg:pb-56"> 
+          <p className="text-xl font-semibold text-center md:text-left">No Applied Jobs Yet! </p>  </div>}
         {appliedJobs.map((job) => (
           <div
             key={job.applicationId}

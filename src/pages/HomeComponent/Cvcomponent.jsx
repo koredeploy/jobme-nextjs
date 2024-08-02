@@ -8,9 +8,9 @@ const Cvcomponent = () => {
     <div className='mx-auto w-11/12 container'>
     <div className='  grid grid-cols-1 lg:grid-cols-2 items-center'>
         <div className=' mx-auto'>
-            <h1 className='text-xl  md:text-2xl md:w-8/12 lg:w-full xl:w-8/12 font-semibold '>Get Jobs that match your Qualifications and Skill Set</h1>
+            <h1 className='text-xl  md:text-2xl lg:text-3xl md:w-8/12 lg:w-full xl:w-8/12 font-semibold '>Get Jobs that match your Qualifications and Skill Set</h1>
 
-            <p className='mt-10 md:w-11/12 lg:w-full'>Lorem ipsum dolor sit amet consectetur. Dolor euismod mattis nulla aliquam a. In ac in ornare donec consectetur. Nam semper gravida enim dolor velit aliquam ut ac. </p>
+            <p className='mt-10 w-full md:w-[75%] text-base lg:text-lg lg:w-full '>Lorem ipsum dolor sit amet consectetur. Dolor euismod mattis nulla aliquam a. In ac in ornare donec consectetur. Nam semper gravida enim dolor velit aliquam ut ac. </p>
 
             <button className='btn-color text-white mt-5 py-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>Upload Your CV</button>
         </div>

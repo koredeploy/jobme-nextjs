@@ -29,6 +29,10 @@ yarn-error.log*
 .env*.local
 .env
 
+# Ignore service account keys
+jobme-431301-42a2dec7a85a.json
+*-key.json
+
 # vercel
 .vercel
 

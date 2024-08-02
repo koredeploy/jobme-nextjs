@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Loader from "@/components/loader/Loader";
+
+import { IoEyeOff } from "react-icons/io5";
+import { IoEye } from "react-icons/io5";
 import { useContext } from "react";
 import AppContext from "../../../context/AppContext";
 
@@ -20,6 +23,12 @@ const Login = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [signinError, setSigninError] = useState("");
+  const [show, setShow] = useState(false);
+
+  const toggleEye = () => {
+    setShow(!show);
+  };
+  const passwordType = show ? "text" : "password";
 
   // const {setUserName, setUserEmail} = useContext(AppContext)
   const onSubmit = async (data) => {
@@ -68,7 +77,12 @@ const Login = () => {
         <div className="w-10/12 md:w-9/12 lg:w-10/12 xl:w-8/12 mx-auto  my-auto">
           <div className="flex justify-center mx-auto">
             <Link href="/">
-              <Image src="/JOBME-LOGO.svg" width={75} height={75} alt="home logo" />
+              <Image
+                src="/JOBME-LOGO.svg"
+                width={75}
+                height={75}
+                alt="home logo"
+              />
             </Link>
           </div>
 
@@ -88,8 +102,12 @@ const Login = () => {
             )}
             <div className="w-full border rounded-lg bg-transparent">
               <input
-                {...register("email", {
-                  required: "Email address is required",
+                 {...register("email", {
+                  required: "Email Address is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email address",
+                  },
                 })}
                 type="email"
                 placeholder="Email Address"
@@ -100,14 +118,26 @@ const Login = () => {
               <p className="text-red-500">{errors.email.message}</p>
             )}
 
-            <div className="w-full border rounded-lg bg-transparent">
+            <div className="w-full border relative rounded-lg bg-transparent">
               <input
                 {...register("password", { required: "Password is required" })}
-                type="password"
+                type={`${passwordType}`}
                 placeholder="Password"
                 className="w-full p-2 rounded-lg bg-transparent outline-none"
               />
+             
+              {show ? (
+                 <button type="button" onClick={toggleEye} className="text-gray-400 absolute right-3 translate-y-3 ">
+                   <IoEye  />
+                 </button>
+              ) : (
+                <button type="button" onClick={toggleEye} className="text-gray-400 absolute right-3 translate-y-3">
+               <IoEyeOff  />
+              </button>
+               
+              )}
             </div>
+
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>
             )}
@@ -127,9 +157,9 @@ const Login = () => {
 
             <button
               type="submit"
-              className="btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black"
+              className="btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-cyan-400 hover:text-white"
             >
-              {!isLoading ? <p>Login</p> : <Loader text="logining in ..." />}
+              {!isLoading ? <p>Login</p> : <Loader text="please wait..." />}
             </button>
           </form>
           <div className="flex flex-col mt-8 gap-2 justify-center items-center">

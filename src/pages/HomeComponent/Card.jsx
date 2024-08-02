@@ -5,16 +5,22 @@ import Image from 'next/image';
 import useFetch from '../../../hooks/useFetch';
 import Link from 'next/link';
 import JobCardSwiper from '@/components/JobCardSwiper';
+import SkeletonLoader from '@/components/SkeletonLoader';
+import HomeSkeleton from '@/components/HomeLoader';
 
 const Card = () => {
     const {recentJobs, loading, error} = useFetch('/api/jobs/jobuploads')
     
     if(loading){
-        return <div>loading</div>
+        return <div className='w-11/12 py-10 mx-auto container text-center grid gap-10 grid-col-1 lg:grid-cols-3'>
+             <HomeSkeleton/>
+             <HomeSkeleton/>
+             <HomeSkeleton/>
+        </div>
     }
 
     if(error){
-        return <div>Error: {error}</div>
+        return <div className='w-11/12 mx-auto container text-center'>Error: {error}</div>
     }
 
   return (
@@ -69,7 +75,7 @@ const Card = () => {
    ))}
 </div>
 <div className='block md:hidden'>
-<JobCardSwiper recentJobs={recentJobs}/>
+{/* <JobCardSwiper recentJobs={recentJobs}/> */}
 </div>
    </>
   )

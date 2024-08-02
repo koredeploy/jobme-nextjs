@@ -29,25 +29,25 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex space-x-7">
             <div>
-              <Link href="/" className="flex items-center py-4 px-2 ">
+              <Link href="/" className="flex items-center  py-4 px-2 ">
               <Image src="/JOBME.png" width={75} height={100} alt='logo' />
               </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-1 gap-4">
-            <Link href="/" className={` ${hideLink} py-4 px-2 text-black text-hover transition duration-300`}>Home</Link>
-            <Link href="/joblist" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
-           {userToken &&  <Link href="/appliedjobs" className={` py-4 px-2 text-black text-hover transition duration-300`}>Applied Jobs</Link>}
-            <Link href="/contacts" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
+            <Link href="/" className={` ${hideLink} py-4 px-2 text-lg text-black text-hover transition duration-300`}>Home</Link>
+            <Link href="/joblist" className="py-4 px-2 text-lg text-black text-hover transition duration-300">Job Listings</Link>
+           {userToken &&  <Link href="/appliedjobs" className={` py-4 text-lg px-2 text-black text-hover transition duration-300`}>Applied Jobs</Link>}
+            <Link href="/contacts" className="py-4 px-2 text-lg text-black text-hover transition duration-300">Contact Us</Link>
           </div>
 
           {userToken ? <UserCard/> :  <div className='hidden md:flex justify-center gap-3'>
             <Link  href="/login">
-            <button className='w-16 h-10 my-auto rounded-lg btn-color text-white hover:bg-white hover:text-black  ease-in-out duration-500'>Log In</button>
+            <button className='w-16 h-10 my-auto rounded-lg btn-color text-lg text-white hover:bg-cyan-500 hover:text-white ease-in-out duration-500'>Log In</button>
             </Link>
 
             <Link href="/signup">
-            <button className='w-16 ml-2 h-10  my-auto rounded-lg hover-btn hover:text-white ease-in-out duration-500'>Sign Up</button>
+            <button className='w-16 ml-2 h-10  my-auto rounded-lg text-lg hover:border-b hover:border-t  hover:border-cyan-400 hover:text-black ease-in-out duration-500'>Sign Up</button>
             </Link>
           </div>}
           
@@ -73,14 +73,15 @@ const Navbar = () => {
       </div>
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
         {}
-        <Link href="/" className={`block   py-2 px-4 text-sm text-black text-hover`}>Home</Link>
-        <Link href="/joblist" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
-        <Link href="/contact" className="block py-2 px-4 text-sm text-black text-hover">Contact Us</Link>
+        <Link href="/" className={`block   py-2 px-4 text-lg text-black text-hover`}>Home</Link>
+        <Link href="/joblist" className="block py-2 px-4 text-lg text-black text-hover">Job Listings</Link>
+        {userToken &&  <Link href="/appliedjobs" className="block py-2 px-4 text-lg text-black text-hover">Applied Jobs</Link> }
+        <Link href="/contacts" className="block py-2 px-4 text-lg text-black text-hover">Contact Us</Link>
 
-       {userToken ?  <button onClick={logout} className="block py-2 px-4 text-sm text-black text-hover">Log Out</button> : 
+       {userToken ?  <button onClick={logout} className="block py-2 text-lg px-4  text-black text-hover">Log Out</button> : 
        <>
-       <Link href="/login" className="block py-2 px-4 text-sm text-black text-hover">Log In</Link>
-       <Link href="/signup" className="block py-2 px-4 text-sm text-black text-hover">Sign UP</Link>
+       <Link href="/login" className="block py-2 px-4 text-lg  text-black text-hover">Log In</Link>
+       <Link href="/signup" className="block py-2 px-4 text-lg text-black text-hover">Sign UP</Link>
        </>
        }
 

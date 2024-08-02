@@ -7,3 +7,5 @@ export const industry = [
   "design",
   "Marketing and Advertising",
 ];
+
+

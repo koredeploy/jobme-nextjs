@@ -78,10 +78,10 @@ import Jobs from '../../../../models/Jobs';
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         // ... (keep your existing POST logic)
-        const { title, company, description, employmentType, logoUrl, location, experience, salary, industry, duties, skills, latitude, longitude } = req.body;
+        const { title, company, description, subTitle, employmentType, logoUrl, location, experience, salary, industry, duties, skills, latitude, longitude } = req.body;
 
         // Add validation
-        if (!title || !company || !description || !employmentType || !location ||!logoUrl) {
+        if (!title || !company || !description || !subTitle || !employmentType || !location ||!logoUrl) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
         
@@ -95,6 +95,7 @@ export default async function handler(req, res) {
                 title,
                 company,
                 description,
+                subTitle,
                 employmentType,
                 logoUrl,
                 location,
@@ -102,9 +103,9 @@ export default async function handler(req, res) {
                 salary,
                 duties,
                 skills,
-                industry,
                 latitude,
-                longitude
+                longitude,
+                industry,
             });
             console.log('New job created:', newJob);
 
@@ -123,7 +124,8 @@ export default async function handler(req, res) {
             console.log('MongoDB connected successfully');
 
             console.log('Retrieving jobs...');
-            const allJobs = await Jobs.find({});
+            const allJobs = await Jobs.find({})
+            .sort({ createdAt: -1 })
             console.log(`Retrieved ${allJobs.length} jobs`);
 
             // Get recent jobs (latest 6)

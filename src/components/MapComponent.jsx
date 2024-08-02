@@ -24,7 +24,7 @@ const MapComponent = () => {
 
   const mapStyle = {
     marginTop:"1.3rem",
-    height: "500px",
+    height: "430px",
     width: "100%",
     zIndex: 1,
     borderRadius: "0.5rem",
