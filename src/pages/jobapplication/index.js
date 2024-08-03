@@ -99,8 +99,8 @@ const JobApplication = () => {
       console.log("Application submitted successfully:", response.data);
       
       // You can add a success message or redirect the user here
-      router.push("/appliedjobs"); // Redirect to a success page
       setShowSuccess(true);
+      router.push("/appliedjobs"); // Redirect to a success page
     } catch (error) {
       console.error(
         "Error submitting application:",

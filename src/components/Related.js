@@ -44,7 +44,7 @@ const Related = ({industry}) => {
     {relatedJobs.map((job)=>(
        <div key={job._id} >
        <div className="rounded-t-lg shadow-[0_2px_7px_rgb(0,0,0,0.2)] w-full px-6 py-8 mx-auto mt-5">
-         <h1 className="text-xl font-semibold">{job.title}</h1>
+         <h1 className="text-xl text-left font-semibold">{job.title}</h1>
          <div className="flex gap-2 items-center mt-4">
            <GoClock className="icon-color" size={20} />
            <p className="text-gray-600">Posted 24 hours ago</p>

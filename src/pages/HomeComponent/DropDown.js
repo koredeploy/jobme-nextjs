@@ -189,7 +189,7 @@ const DropDown = () => {
   } = useContext(AppContext);
 
   return (
-    <div className='section-2 py-10 flex items-center'>
+    <div className='section-2 py-8 flex items-center'>
       <form className="container w-10/12 mx-auto">
         <div className="grid items-center grid-cols-2 md:grid-cols-5 gap-10 justify-between">
           <div className="relative w-full">

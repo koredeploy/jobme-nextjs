@@ -152,8 +152,8 @@ if (id) {
               alt="google icon"
               className="lg:w-16 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-2 bg-white"
             />
-            <h4 className="font-semibold lg:mt-1 text-xl lg:text-2xl">{job.title}</h4>
-            <p className="my-5  ">{job.subTitle}</p>
+            <h4 className="font-semibold  mt-2 text-xl lg:text-2xl">{job.title}</h4>
+            <p className="my-5 text-lg lg:text-xl  ">{job.subTitle}</p>
             <h5 className="font-semibold text-xl mb-2">Job Information:</h5>
             <div className="bg-white rounded-lg px-2 lg:px-3 py-3 lg:py-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] md:w-5/12 lg:w-9/12">
               <p className="flex justify-start items-center gap-1 font-semibold ">
@@ -230,10 +230,10 @@ if (id) {
 
         {/* BULLET POINT CONTENT */}
         <div className="w-full text-left ">
-          <h3 className=" mt-0 lg:mt-1 mb-2 text-2xl lg:text-3xl font-semibold">Job Description:</h3>
-          <p>{job.description}</p>
+          <h3 className="  mb-2 text-2xl lg:text-3xl font-semibold">Job Description:</h3>
+          <p className="text-lg lg:text-xl ">{job.description}</p>
 
-          <p className="mt-5">{job.description}</p>
+          {/* <p className="mt-5 text-lg lg:text-xl ">{job.description}</p> */}
 
           <h3 className="mt-4 mb-2 text-2xl lg:text-3xl font-semibold lg:mt-8">
             Duties & Responsibilities:
@@ -241,7 +241,7 @@ if (id) {
 
           <ul>
             {job.duties.map((duty) => (
-              <li key={duty._id} className="flex gap-2  justify-start items-center">
+              <li key={duty._id} className="flex gap-2 text-lg lg:text-xl justify-start items-center">
                 <Image src="/blue-tick.svg" width={20} height={20} alt="tick" />
                 {duty}
               </li>
@@ -254,7 +254,7 @@ if (id) {
 
           <ul>
             {job.skills.map((skill) => (
-              <li key={skill._id} className="flex gap-2  justify-start items-center">
+              <li key={skill._id} className="flex gap-2 text-lg lg:text-xl  justify-start items-center">
                 <Image src="/blue-tick.svg" width={20} height={20} alt="tick" />
                 {skill}
               </li>

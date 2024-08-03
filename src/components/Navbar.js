@@ -124,8 +124,8 @@ const Navbar = () => {
                   <Link href="/" className="flex items-center py-4 px-2">
                     <Image
                       src="/JOBME.png"
-                      width={75}
-                      height={100}
+                      width={110}
+                      height={125}
                       alt="logo"
                     />
                   </Link>
