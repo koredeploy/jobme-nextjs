@@ -36,7 +36,7 @@ const Footer = () => {
             <li className='list-disc text-hover'>Find Jobs</li>
             </Link> 
 
-            <Link href="/contact">
+            <Link href="/contacts">
             <li className='list-disc text-hover'>Contact Us</li>
             </Link> 
 
