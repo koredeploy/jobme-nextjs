@@ -64,6 +64,7 @@ import AppContext from "../../../context/AppContext";
 import ResetBtn from "@/components/fetchLoader/FetchLoader";
 import FetchLoader from "@/components/fetchLoader/FetchLoader";
 import SkeletonLoader from "@/components/SkeletonLoader";
+import { formatDistanceToNow } from "date-fns";
 
 const JobListing = () => {
   const {
@@ -74,6 +75,7 @@ const JobListing = () => {
     selectedMode,
     setSelectedMode,
     selectedLocation,
+    setSelectedLocation
   } = useContext(AppContext);
   const userId = Cookies.get("userId");
   console.log(userId);
@@ -125,6 +127,8 @@ const filteredJobs = jobs.filter((job) => {
     setSelectedIndustry(null);
     setSelectedJobType(null);
     setSelectedMode(null);
+    setSelectedLocation(null);
+    
   };
 
   // Pagination logic
@@ -194,7 +198,8 @@ const filteredJobs = jobs.filter((job) => {
                     width={25}
                     height={25}
                   />
-                  <p>Posted {new Date(job.createdAt).toLocaleDateString()}</p>
+                  <p>Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</p>
+                  
                 </div>
               </div>
 
@@ -229,7 +234,7 @@ const filteredJobs = jobs.filter((job) => {
                 <h1 className="text-xl font-semibold">{job.title}</h1>
                 <div className="flex gap-2 items-center mt-4">
                   <GoClock className="icon-color" size={20} />
-                  <p className="text-gray-600">Posted 24 hours ago</p>
+                  <p className="text-gray-600">Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</p>
                 </div>
                 <div className="flex justify-between mt-4 pr-5">
                   <div className="rounded px-1 py-1 bg-[#0DCAF01F]">

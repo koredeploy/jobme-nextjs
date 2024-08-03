@@ -7,6 +7,7 @@ import Link from 'next/link';
 import JobCardSwiper from '@/components/JobCardSwiper';
 import SkeletonLoader from '@/components/SkeletonLoader';
 import HomeSkeleton from '@/components/HomeLoader';
+import { formatDistanceToNow } from 'date-fns';
 
 const Card = () => {
     const {recentJobs, loading, error} = useFetch('/api/jobs/jobuploads')
@@ -35,7 +36,7 @@ const Card = () => {
                 </div>
                 <div className='flex gap-2 items-center mt-4'>
                 <GoClock className='icon-color' size={20}/>
-                <p className='text-gray-600'>Posted 24 hours ago</p>
+                <p className='text-gray-600'>Posted {formatDistanceToNow(new Date(recent.createdAt), { addSuffix: true })} </p>
 
                 </div>
                 <div className='flex justify-between mt-4'>

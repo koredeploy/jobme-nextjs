@@ -173,10 +173,13 @@
 
 import React, { useContext } from 'react';
 import AppContext  from '../../../context/AppContext' 
-import { jobType, mode, industry } from '../../../data/filterJobs';
+import { jobType, mode, industry, location } from '../../../data/filterJobs';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const DropDown = () => {
+  const router = useRouter()
   const {
     selectedJobType,
     setSelectedJobType,
@@ -187,9 +190,12 @@ const DropDown = () => {
     selectedLocation,
     setSelectedLocation,
   } = useContext(AppContext);
-
+const showHero = router.pathname == "/joblist" ? "block" :"hidden"
   return (
+   <>
+    <Image src="/joblist-hero.svg" alt='hero-img' width={100} height={100} className={`${showHero} w-full h-full`} />
     <div className='section-2 py-8 flex items-center'>
+      
       <form className="container w-10/12 mx-auto">
         <div className="grid items-center grid-cols-2 md:grid-cols-5 gap-10 justify-between">
           <div className="relative w-full">
@@ -254,6 +260,9 @@ const DropDown = () => {
             >
               <option value="">Select Location</option>
               {/* Populate locations dynamically if you have a list */}
+              {location.map((type, i) => (
+                <option key={i} value={type}>{type}</option>
+              ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black">
         <svg class="-mr-1 h-5 w-5 text-gray-950" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -277,6 +286,7 @@ const DropDown = () => {
           </div>
       </form>
     </div>
+   </>
   );
 }
 

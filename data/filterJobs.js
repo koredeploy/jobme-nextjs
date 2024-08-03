@@ -8,4 +8,7 @@ export const industry = [
   "Marketing and Advertising",
 ];
 
+export const location = [
+  "USA", "Nigeria", "United Kingdom", "Germany"
+]
 

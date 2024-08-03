@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { GoClock } from "react-icons/go";
 import { SlLocationPin } from "react-icons/sl";
 import Link from 'next/link';
+import { formatDistanceToNow } from 'date-fns';
 
 const Related = ({industry}) => {
     const {allJobs, error, loading} = useFetch("/api/jobs/jobuploads")
@@ -47,7 +48,8 @@ const Related = ({industry}) => {
          <h1 className="text-xl text-left font-semibold">{job.title}</h1>
          <div className="flex gap-2 items-center mt-4">
            <GoClock className="icon-color" size={20} />
-           <p className="text-gray-600">Posted 24 hours ago</p>
+           <p className="text-gray-600">Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</p>
+           
          </div>
          <div className="flex justify-between mt-4 pr-5">
            <div className="rounded px-1 py-1 bg-[#0DCAF01F]">
