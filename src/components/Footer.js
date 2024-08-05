@@ -10,7 +10,8 @@ const Footer = () => {
     <div className='left flex flex-col gap-2'>
         <div className='logo'>
               <Link href="/" className="flex items-center py-4 px-2 ">
-              <Image src="/JOBME.png" width={75} height={100} alt='logo'  />
+              <Image src="/JOBME.png"  width={100}
+                      height={120} alt='logo'  />
               </Link>
         </div>
 
