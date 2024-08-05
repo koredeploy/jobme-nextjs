@@ -76,7 +76,7 @@ const SignUp = () => {
 
   return (
     <div className="sign-bg  flex justify-center items-center mx-auto py-10">
-      <div className="bg-[#ffffffe7] w-full md:w-8/12 lg:w-6/12  pt-8 pb-6 xl:rounded-3xl">
+      <div className="bg-[#ffffffe7] w-full md:w-8/12 xl:w-6/12  pt-8 pb-6 xl:rounded-3xl">
         <div className=" w-10/12 md:w-9/12 lg:w-10/12 xl:w-8/12 mx-auto  my-auto">
           <div className="flex justify-center mx-auto">
             <Link href="/">

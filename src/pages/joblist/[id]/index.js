@@ -278,7 +278,9 @@ if (id) {
           Lorem ipsum dolor sit amet consectetur. Arcu in amet pellentesque
           magna integer turpis. Tortor sollicitudin varius lectus ac .
         </p>
+
         <Related industry={industry}/> 
+        
       </div>
     </>
   );

@@ -14,69 +14,30 @@ const JobApplication = () => {
     reset,
   } = useForm();
   const userId = Cookies.get("userId");
+  const firstName = Cookies.get("firstName");
+  const lastName = Cookies.get("lastName");
+  const userEmail = Cookies.get("userEmail");
   const jobId = Cookies.get("jobId");
   const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false)
-  const [formError, setFormError] = useState("")
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [formError, setFormError] = useState("");
   const router = useRouter();
   // const { jobId } = router.query
   console.log(userId);
   console.log(jobId);
 
-    const headerText = "Application Successful!"
-  const path = "application"
-  
-  // const onSubmit = async (data) => {
-  //   if (!userId || !jobId) {
-  //     console.error("User or job ID not available");
-  //     return;
-  //   }
+  const headerText = "Application Successful!";
+  const path = "application";
 
-  //   setLoading(true);
-
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append("userId", userId);
-  //     formData.append("jobId", jobId);
-  //     formData.append("firstName", data.firstname);
-  //     formData.append("lastName", data.lastname);
-  //     formData.append("email", data.email);
-  //     formData.append("phoneNumber", data.phone);
-  //     formData.append("coverLetter", data.coverLetter);
-  //     formData.append("resume", data.resume[0]); // Assuming resume is a FileList
-
-  //     const response = await axios.post(
-  //       "/api/jobs/submitapplication",
-  //       formData,
-  //       {
-  //         headers: { "Content-Type": "multipart/form-data" },
-  //       }
-  //     );
-
-  //     console.log("Application submitted successfully:", response.data);
-    
-  //     // You can add a success message or redirect the user here
-  //     router.push("/appliedjobs"); // Redirect to a success page
-  //     setShowSuccess(true)
-  //   } catch (error) {
-  //     console.error(
-  //       "Error submitting application:",
-  //       error.response?.data?.message || error.message
-  //     );
-  //     // Handle the error (e.g., show an error message to the user)
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const onSubmit = async (data) => {
     if (!userId || !jobId) {
       console.error("User or job ID not available");
       return;
     }
-  
+
     setLoading(true);
     setFormError(""); // Clear any previous error messages
-  
+
     try {
       const formData = new FormData();
       formData.append("userId", userId);
@@ -87,7 +48,7 @@ const JobApplication = () => {
       formData.append("phoneNumber", data.phone);
       formData.append("coverLetter", data.coverLetter);
       formData.append("resume", data.resume[0]); // Assuming resume is a FileList
-  
+
       const response = await axios.post(
         "/api/jobs/submitapplication",
         formData,
@@ -95,9 +56,9 @@ const JobApplication = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-  
+
       console.log("Application submitted successfully:", response.data);
-      
+
       // You can add a success message or redirect the user here
       setShowSuccess(true);
       router.push("/appliedjobs"); // Redirect to a success page
@@ -107,22 +68,31 @@ const JobApplication = () => {
         error.response?.data?.message || error.message
       );
       // Set the error message to formError state
-      setFormError(error.response?.data?.message || "An error occurred while submitting your application. Please try again.");
-    
+      setFormError(
+        error.response?.data?.message ||
+          "An error occurred while submitting your application. Please try again."
+      );
     } finally {
       setLoading(false);
     }
   };
   return (
     <>
-    <SuccessModal show={showSuccess} setShow={setShowSuccess} path={path} headerText={headerText}/>
+      <SuccessModal
+        show={showSuccess}
+        setShow={setShowSuccess}
+        path={path}
+        headerText={headerText}
+      />
       <div className="mt-1 mb-20">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className=" bg-[#DBF7FD] container lg:w-8/12 mx-auto justify-center items-center  text-gray-500 text-left rounded-lg p-2 py-4"
-          >
+        >
           <div className=" lg:w-11/12 lg:mt-5 mx-auto">
-          {formError && <p className="text-red-500 font-semibold ">{formError}</p>}
+            {formError && (
+              <p className="text-red-500 font-semibold ">{formError}</p>
+            )}
             {/* BREAKPOINT ONE */}
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:items-center lg:gap-8 md:mt-4">
               <div>
@@ -135,6 +105,7 @@ const JobApplication = () => {
                   type="text"
                   placeholder=""
                   id="firstname"
+                  defaultValue={firstName}
                   autoComplete="given-name"
                 />
                 {errors.firstname && (
@@ -154,6 +125,7 @@ const JobApplication = () => {
                   type="text"
                   placeholder=""
                   id="lastname"
+                  defaultValue={lastName}
                   autoComplete="family-name"
                 />
                 {errors.lastname && (
@@ -177,6 +149,7 @@ const JobApplication = () => {
                   })}
                   className="w-full lg:text-sm m-auto px-2 py-3 mb-3 text-black bg-white border border-gray-400 rounded-md lg:rounded-lg placeholder:text-gray-400 outline-gray-500"
                   type="email"
+                  defaultValue={userEmail}
                   placeholder=""
                   id="email"
                   autoComplete="email"
@@ -192,6 +165,12 @@ const JobApplication = () => {
                 <input
                   {...register("phone", {
                     required: "Your phone number is required",
+                    pattern: {
+                      value:
+                        /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/, // Regex pattern to accept only numbers
+                      message:
+                        "Invalid phone number. Please enter only digits.",
+                    },
                   })}
                   className="w-full lg:text-sm m-auto px-2 py-3 mb-3 text-black bg-white border border-gray-400 rounded-md lg:rounded-lg placeholder:text-gray-400 outline-gray-500"
                   type="tel"
@@ -270,7 +249,7 @@ const JobApplication = () => {
               className="container justify-center items-center btn w-48 font-light bg-[#0dcaf0] mx-auto rounded-md text-center lg:rounded-lg p-2 text-white lg:text-lg "
               disabled={loading}
             >
-              {loading ? <Loader text={"please wait..."}/> : "Apply Now"}
+              {loading ? <Loader text={"please wait..."} /> : "Apply Now"}
             </button>
           </div>
         </form>
@@ -280,3 +259,4 @@ const JobApplication = () => {
 };
 
 export default withAuth(JobApplication);
+

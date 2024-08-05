@@ -27,11 +27,12 @@ const Related = ({industry}) => {
     
      
 
-    
+    // Filtering jobs by the industry
     const filteredJobs = allJobs.filter(job => 
         job.industry === jobIndustry
     );
 
+    // getting only three related jobs
     const relatedJobs = filteredJobs.slice(0, 3)
       
     

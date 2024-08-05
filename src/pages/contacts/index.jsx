@@ -4,8 +4,11 @@ import Image from "next/image";
 import axios from "axios";
 import Loader from "@/components/loader/Loader";
 import SuccessModal from "@/components/modals/SuccessModal";
+import Cookies from "js-cookie";
 
 const Contact = () => {
+  const firstName = Cookies.get("firstName");
+  const userEmail = Cookies.get("userEmail");
   const {
     register,
     handleSubmit,
@@ -39,8 +42,8 @@ const Contact = () => {
       <div className="">
         <div className="w-full z-10 ">
           <div className="contact-bg flex flex-col justify-center items-center  h-36 lg:h-64 text-white ">
-            <h1 className="text-2xl">Get In Touch With Us</h1>
-            <h2>We want to hear from you</h2>
+            <h1 className="text-2xl lg:text-4xl">Get In Touch With Us</h1>
+            <h2 className="text-lg lg:text-xl">We want to hear from you</h2>
           </div>
         </div>
         <div className=" w-4/5 lg:w-2/3 mx-auto z-20 -mt-5">
@@ -56,6 +59,7 @@ const Contact = () => {
                       required: "Name is required",
                     })}
                     type="text"
+                    defaultValue={firstName}
                     placeholder="Name*"
                     className="w-full outline-none h-11 text-sm px-2 rounded-lg border border-red-600"
                   />
@@ -74,6 +78,7 @@ const Contact = () => {
                       },
                     })}
                     type="text"
+                    defaultValue={userEmail}
                     placeholder="Email*"
                     className="w-full outline-none h-11 text-sm px-2 rounded-lg border"
                   />
@@ -88,6 +93,12 @@ const Contact = () => {
                <input
                   {...register("phoneNumber", {
                     required: "Phone Number is required",
+                    pattern: {
+                      value:
+                        /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/, // Regex pattern to accept only numbers
+                      message:
+                        "Invalid phone number. Please enter only digits.",
+                    },
                   })}
                   type="text"
                   placeholder="Phone number*"

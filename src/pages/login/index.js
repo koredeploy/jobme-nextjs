@@ -52,7 +52,8 @@ const Login = () => {
         console.log(responseData.user.id);
         Cookies.set("userId", responseData.user.id);
         Cookies.set("userEmail", responseData.user.email);
-        Cookies.set("userName", responseData.user.firstname);
+        Cookies.set("firstName", responseData.user.firstname);
+        Cookies.set("lastName", responseData.user.lastname);
         Cookies.set("token", responseData.token, {
           expires: 1,
           secure: process.env.NODE_ENV === "production",
