@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const SectionOne = () => {
   return (
@@ -15,10 +16,10 @@ const SectionOne = () => {
                 <h3 className='font-semibold w-11/12 lg:w-4/6 text-xl lg:text-xl xl:text-3xl'>Find Millions of Job
                 Opportunities Right for You!</h3>
 
-                <p className='py-3 w-full lg:w-[80%] xl:text-xl'>Lorem ipsum dolor sit amet consectetur. Duis sed ornare adipiscing sed platea integer habitant. Eros quis hac amet dignissim morbi vulputate eriva it commodo mi. Est mauris diam donec magna. Sit cras fringilla integer sed praesent urna amet. Donec suspendisse quis sed placerat lacus eupiii pretium duis semper est ac nec ultricie.</p>
+                <p className='pt-4 pb-7 w-full lg:w-[80%] xl:text-xl '>Lorem ipsum dolor sit amet consectetur. Duis sed ornare adipiscing sed platea integer habitant. Eros quis hac amet dignissim morbi vulputate eriva it commodo mi. Est mauris diam donec magna. Sit cras fringilla integer sed praesent urna amet. Donec suspendisse quis sed placerat lacus eupiii pretium duis semper est ac nec ultricie.</p>
 
-                <button className='mt-4 btn-color text-white px-8 py-2 rounded-lg 
-                hover:bg-cyan-500 hover:text-white xl:mt-6 ease-in-out duration-100'>Discover More</button>
+                <Link href="/joblist" className='mt-4 btn-color  text-white px-8 py-3 rounded-lg 
+                hover:bg-cyan-500 hover:text-white xl:mt-6 ease-in-out duration-100'>Discover More</Link>
                
                 
             </div>
@@ -32,12 +33,12 @@ const SectionOne = () => {
                 Talents?
                 </h3>
 
-                <p className='py-3 w-full lg:w-[80%] xl:text-xl'>
+                <p className='pt-4 pb-7 w-full lg:w-[80%] xl:text-xl'>
                 Lorem ipsum dolor sit amet consectetur. Duis sed ornare adipiscing sed platea integer habitant. Eros quis hac amet dignissim morbi vulputate eriva it commodo mi. Est mauris diam donec magna. Sit cras fringilla integer sed praesent urna amet. Donec suspendisse quis sed placerat lacus eupiii pretium duis semper est ac nec ultricie.
                 </p>
 
-                <button className='mt-4 btn-color text-white px-8 py-2 rounded-lg 
-                hover:bg-cyan-500 hover:text-white xl:mt-6 ease-in-out duration-500'>Discover More</button>
+                <Link href="/joblist" className='mt-4 btn-color text-white px-8 py-3 rounded-lg 
+                hover:bg-cyan-500 hover:text-white xl:mt-6 ease-in-out duration-500'>Discover More</Link>
 
             </div>
 

@@ -7,7 +7,7 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import Cookies from 'js-cookie'
 
 export default function UserDetailModal({open, setOpen}) {
-  const userName = Cookies.get("userName")
+  const firstName = Cookies.get("fisrtName")
   const userEmail = Cookies.get("userEmail")
 
   // return (
@@ -100,7 +100,7 @@ export default function UserDetailModal({open, setOpen}) {
                       />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-base">{userName}</h4>
+                      <h4 className="font-semibold text-base">{firstName}</h4>
                       <p>{userEmail}</p>
                     </div>
                   </div>

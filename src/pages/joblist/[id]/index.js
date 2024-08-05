@@ -91,6 +91,7 @@ import { formatDistanceToNow } from "date-fns";
 import Cookies from "js-cookie";
 import MapComponent from "@/components/MapComponent";
 import Related from "@/components/Related";
+import FetchLoader from "@/components/fetchLoader/FetchLoader";
 
 const JobDetailPage = () => {
   const [job, setJob] = useState(null)
@@ -129,7 +130,7 @@ if (id) {
   },[id] )
 
 
-  if (loading) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14">Loading....</div>
+  if (loading) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14"><FetchLoader/></div>
    if (error) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14">{error}</div>;
     if (!job) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14">Job Not found</div>;
 
@@ -141,7 +142,7 @@ if (id) {
 
   return (
     <>
-      {/* <SuccessModal/> */}
+  
       <div className="container pt-10 justify-center items-center mx-auto w-11/12 mt-1 mb-6 flex flex-col lg:flex-row gap-10 lg:gap-16 lg:justify-between lg:items-start">
         <div className="w-full lg:w-3/4">
           <div className="bg-[#DBF7FD] rounded-lg p-5 lg:p-4">
@@ -278,7 +279,9 @@ if (id) {
           Lorem ipsum dolor sit amet consectetur. Arcu in amet pellentesque
           magna integer turpis. Tortor sollicitudin varius lectus ac .
         </p>
+
         <Related industry={industry}/> 
+        
       </div>
     </>
   );

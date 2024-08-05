@@ -5,6 +5,7 @@ import { GoClock } from "react-icons/go";
 import { SlLocationPin } from "react-icons/sl";
 import Link from 'next/link';
 import { formatDistanceToNow } from 'date-fns';
+import FetchLoader from './fetchLoader/FetchLoader';
 
 const Related = ({industry}) => {
     const {allJobs, error, loading} = useFetch("/api/jobs/jobuploads")
@@ -21,17 +22,18 @@ const Related = ({industry}) => {
     
       if (loading) return (
         <div className="w-11/12 mx-auto container flex justify-center py-14">
-          Loading...
+          <FetchLoader/>
         </div>
       );
     
      
 
-    
+    // Filtering jobs by the industry
     const filteredJobs = allJobs.filter(job => 
         job.industry === jobIndustry
     );
 
+    // getting only three related jobs
     const relatedJobs = filteredJobs.slice(0, 3)
       
     

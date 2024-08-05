@@ -22,6 +22,7 @@ export default async function handler(req, res) {
 
       // Fetch applications with populated job details
       const applications = await JobApplication.find({ userId: new mongoose.Types.ObjectId(userId) })
+      .sort({ createdAt: -1 })
         .populate({
           path: 'jobId',
           model: Jobs,
