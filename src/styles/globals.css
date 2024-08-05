@@ -44,15 +44,17 @@
 }
 @media (min-width: 768px){
   .sign-bg{
-    background-image: url(/signup.png);
+    background-image: url("/signup.png");
     background-repeat: no-repeat;
     background-size: cover;
+    object-fit: cover;
     height: 100vh;
   }
   .log-bg{
-    background-image: url(/login.png);
+    background-image: url("/Login.png");
     background-repeat: no-repeat;
     background-size: cover;
+    object-fit: cover;
     height: 100vh;
 
   }

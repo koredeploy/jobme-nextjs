@@ -207,15 +207,7 @@ const JobApplication = () => {
             {/* AGREE & UPLOAD DOC */}
             <div className="container mt-6">
               <p className="">Upload CV/Resume*</p>
-              {/* <input
-              {...register("resume", {
-                required: "Please upload a file",
-              })}
-              type="file"
-              id="resume"
-              placeholder="No file chosen"
-              className="container mt-2 outline-none bg-white lg:w-6/12 py-3 rounded-md "
-            /> */}
+             
               <input
                 {...register("resume", {
                   required: "Please upload a file",
