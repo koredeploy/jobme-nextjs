@@ -134,9 +134,7 @@ const DropDown = () => {
   console.log("====================================");
   const showHero = router.pathname == "/joblist" ? "block" : "hidden";
 
-  // const handleChange = (type, value) => {
-  //   dispatch({ type: `set${type}`, payload: value });
-  // };
+
   const handleChange = (type, value) => {
     console.log(`Changing ${type} to ${value}`);
     dispatch({ type: `set${type}`, payload: value });
