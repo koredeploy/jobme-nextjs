@@ -1,52 +1,3 @@
-// import withAuth from '../../components/hoc/withAuth';
-// import React, { useState, useEffect } from 'react';
-// import Link from 'next/link';
-// import Image from 'next/image';
-
-// // export async function getServerSideProps() {
-// //   const res = await fetch('http://localhost:3001/api/jobs/jobuploads');
-// //   const data = await res.json();
-
-// //   return {
-// //     props: {
-// //       jobs: data.data, // Assuming the response has a `data` field containing the jobs
-// //     },
-// //   };
-// // }
-
-// // const JobListing = ({ jobs }) => {
-// //   const [loading, setLoading] = useState(true);
-
-// //   useEffect(() => {
-// //     if (jobs && jobs.length > 0) {
-// //       setLoading(false);
-// //     }
-// //   }, [jobs]);
-
-// //   if (loading) {
-// //     return <div>Loading...</div>;
-// //   }
-
-//   return (
-//     <>
-//       <div>JobListing</div>
-//       <div className='w-11/12 container mx-auto py-10'>
-//         {/* {jobs.map((job) => (
-//           <div key={job._id} className=''>
-//             <div>
-//               <Image src={job.logoUrl} alt='logo' width={30} height={30} />
-//               <p>{job.comapny}</p>
-//               <p>{job.title}</p>
-//               <Link href={`/joblisting/${job._id}`}> Apply </Link>
-//             </div>
-//           </div>
-//         ))} */}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default withAuth(JobListing);
 
 "use client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
@@ -67,16 +18,10 @@ import SkeletonLoader from "@/components/SkeletonLoader";
 import { formatDistanceToNow } from "date-fns";
 
 const JobListing = () => {
-  const {
-    selectedJobType,
-    setSelectedJobType,
-    selectedIndustry,
-    setSelectedIndustry,
-    selectedMode,
-    setSelectedMode,
-    selectedLocation,
-    setSelectedLocation
-  } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const { selectedJobType, selectedIndustry, selectedMode, selectedLocation } =
+    state;
+
   const userId = Cookies.get("userId");
   console.log(userId);
   const { allJobs: jobs, error, loading } = useFetch("/api/jobs/jobuploads");
@@ -92,16 +37,18 @@ const JobListing = () => {
         Error: {error}
       </div>
     );
-    
+
   if (loading)
     return (
       <div className=" flex flex-col pt-0 py-24 pb-[25rem]">
-        <div className=""><DropDown/></div>
+        <div className="">
+          <DropDown />
+        </div>
         <div className="flex w-11/12 mx-auto container flex-col justify-center pt-11 gap-8">
-        <SkeletonLoader/>
-        <SkeletonLoader/>
-        <SkeletonLoader/>
-        <SkeletonLoader/>
+          <SkeletonLoader />
+          <SkeletonLoader />
+          <SkeletonLoader />
+          <SkeletonLoader />
         </div>
       </div>
     );
@@ -113,22 +60,24 @@ const JobListing = () => {
     );
 
 
-// job filtering
-const filteredJobs = jobs.filter((job) => {
-  return (
-    (!selectedJobType || (job.employmentType && job.employmentType.toLowerCase() === selectedJobType.toLowerCase())) &&
-    (!selectedIndustry || (job.industry && job.industry.toLowerCase() === selectedIndustry.toLowerCase())) &&
-    (!selectedMode || (job.employmentType && job.employmentType.toLowerCase() === selectedMode.toLowerCase())) &&
-    (!selectedLocation || (job.location && job.location.toLowerCase() === selectedLocation.toLowerCase()))
-  );
-});
 
+
+    // job filtering
+  const filteredJobs = jobs.filter((job) => {
+    return (
+      (!selectedJobType || (job.employmentType && job.employmentType.toLowerCase() === selectedJobType.toLowerCase())) &&
+      (!selectedIndustry || (job.industry && job.industry.toLowerCase() === selectedIndustry.toLowerCase())) &&
+      (!selectedMode || (job.employmentType && job.employmentType.toLowerCase() === selectedMode.toLowerCase())) &&
+      (!selectedLocation || (job.location && job.location.toLowerCase() === selectedLocation.toLowerCase()))
+    );
+  });
+
+// reset filter
   const resetFilter = () => {
-    setSelectedIndustry(null);
-    setSelectedJobType(null);
-    setSelectedMode(null);
-    setSelectedLocation(null);
-    
+    dispatch({ type: 'setJobType', payload: '' });
+    dispatch({ type: 'setIndustry', payload: '' });
+    dispatch({ type: 'setMode', payload: '' });
+    dispatch({ type: 'setLocation', payload: '' });
   };
 
   // Pagination logic
@@ -149,17 +98,13 @@ const filteredJobs = jobs.filter((job) => {
     }
   };
 
-  // if(currentJobs.length < 1){
-  //   return <div className='w-11/12 mx-auto container flex justify-center py-14'> No JOb fit your search </div>
-  // }
+ 
   return (
     <>
       <div className="gradient-bg">
-        {loading ? <FetchLoader/> : <DropDown />}
-        
+        {loading ? <FetchLoader /> : <DropDown />}
       </div>
       <div className="w-11/12 container mx-auto ">
-      
         {currentJobs.length < 1 && (
           <div className="w-11/12 mx-auto container flex items-center gap-4 justify-center pt-20 pb-28 ">
             <p className="text-center ">No JOb fit your search</p>{" "}
@@ -198,8 +143,12 @@ const filteredJobs = jobs.filter((job) => {
                     width={25}
                     height={25}
                   />
-                  <p>Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</p>
-                  
+                  <p>
+                    Posted{" "}
+                    {formatDistanceToNow(new Date(job.createdAt), {
+                      addSuffix: true,
+                    })}
+                  </p>
                 </div>
               </div>
 
@@ -215,7 +164,6 @@ const filteredJobs = jobs.filter((job) => {
                 </div>
                 <p className="text-xl font-semibold">{job.salary}</p>
               </div>
-              {/* <p>Applied At: {new Date(job.createdAt).toLocaleDateString()}</p> */}
               <div className="flex justify-end items-center">
                 <Link
                   href={`/joblist/${job._id}`}
@@ -234,7 +182,12 @@ const filteredJobs = jobs.filter((job) => {
                 <h1 className="text-xl font-semibold">{job.title}</h1>
                 <div className="flex gap-2 items-center mt-4">
                   <GoClock className="icon-color" size={20} />
-                  <p className="text-gray-600">Posted {formatDistanceToNow(new Date(job.createdAt), { addSuffix: true })}</p>
+                  <p className="text-gray-600">
+                    Posted{" "}
+                    {formatDistanceToNow(new Date(job.createdAt), {
+                      addSuffix: true,
+                    })}
+                  </p>
                 </div>
                 <div className="flex justify-between mt-4 pr-5">
                   <div className="rounded px-1 py-1 bg-[#0DCAF01F]">
@@ -327,21 +280,3 @@ const filteredJobs = jobs.filter((job) => {
 };
 
 export default withAuth(JobListing);
-
-// fetch data
-
-// export async function getServerSideProps(){
-// try {
-//     const res = await fetch('http://localhost:3001/');
-//   const data = await res.json()
-// console.log(data);
-
-//   return {
-//     props: {
-//       jobs: data.data
-//     }
-//   }
-// } catch (error) {
-//   console.error(error);
-// }
-// }
